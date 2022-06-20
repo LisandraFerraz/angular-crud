@@ -2,12 +2,12 @@ import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angula
 
 // aplicando structural directive
 @Directive({
-  selector: '[myFor]'
+  selector: '[testeW]'
 })
 export class ForDirective implements OnInit{
 
   // criando variaveis que vao armazenar o conteudo do *myFor
-  @Input('myForEm') numbers: number[] = []
+  @Input('testeWTw') words: string[]
 
   constructor(
     private container: ViewContainerRef,
@@ -15,13 +15,13 @@ export class ForDirective implements OnInit{
   }
 
   ngOnInit(): void {
-    for (let number of this.numbers){
+    for (let wordsV of this.words){
       this.container.createEmbeddedView(
         
         // armazena os valores do array numbers em um template no html
         this.template,
         // faz ser possivel a visualizacao dos valores de n no html
-        { $implicit: number })
+        { $implicit: wordsV })
     }
   }
 }

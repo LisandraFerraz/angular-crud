@@ -9,18 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductReadComponent implements OnInit {
 
-  products: Product[] = []
+  products: Product[]
   displayedColumns = ['id', 'name', 'price', 'action']
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService
+  ) { }
 
-  /* ao iniciar a pagina, faz uma requisicao get para o backend
-    resgata os dados e os envia para o array products */
   ngOnInit(): void {
+    // a var products recebe os objetos produtos
     this.productService.read().subscribe(products =>{
       this.products = products
-      console.log(this.products)
+      console.log(products)
     })
   }
-
 }

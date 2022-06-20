@@ -1,6 +1,5 @@
-export class Product{
-    // id opcional = ?
-    id?: number = 0
-    name: string = ""
-    price: number= 0
+export interface Product{
+    id?: number
+    name: string
+    price: number
 }

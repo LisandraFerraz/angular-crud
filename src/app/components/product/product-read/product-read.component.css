@@ -1,12 +1,19 @@
-table{
+table {
     width: 100%;
 }
 
-i {
-    color: #fff;
-    margin-right: 5px;
+i.editBtn{
+    color: #f0f8ff;
+    margin: 10px;
+}
+i.editBtn:hover{
+    color: #d7931e;
 }
 
-i:hover{
-    color: #b8b8b8;
+i.deleteBtn{
+    color: #aeaeae;
+}
+
+i.deleteBtn:hover{
+    color: #ba2929;
 }

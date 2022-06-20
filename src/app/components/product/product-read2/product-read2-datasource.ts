@@ -5,29 +5,28 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
-
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: Product[] = [
-  {id: 1, name: 'Hydrogen', price: 9.99},
-  {id: 2, name: 'Helium', price: 9.99},
-  {id: 3, name: 'Lithium', price: 9.99},
-  {id: 4, name: 'Beryllium', price: 9.99},
-  {id: 5, name: 'Boron', price: 9.99},
-  {id: 6, name: 'Carbon', price: 9.99},
-  {id: 7, name: 'Nitrogen', price: 9.99},
-  {id: 8, name: 'Oxygen', price: 9.99},
-  {id: 9, name: 'Fluorine', price: 9.99},
-  {id: 10, name: 'Neon', price: 9.99},
-  {id: 11, name: 'Sodium', price: 9.99},
-  {id: 12, name: 'Magnesium', price: 9.99},
-  {id: 13, name: 'Aluminum', price: 9.99},
-  {id: 14, name: 'Silicon', price: 9.99},
-  {id: 15, name: 'Phosphorus', price: 9.99},
-  {id: 16, name: 'Sulfur', price: 9.99},
-  {id: 17, name: 'Chlorine', price: 9.99},
-  {id: 18, name: 'Argon', price: 9.99},
-  {id: 19, name: 'Potassium', price: 9.99},
-  {id: 20, name: 'Calcium', price: 9.99},
+  {id: 1, name: 'Hydrogen', price: 25},
+  {id: 2, name: 'Helium', price: 25},
+  {id: 3, name: 'Lithium', price: 25},
+  {id: 4, name: 'Beryllium', price: 25},
+  {id: 5, name: 'Boron', price: 25},
+  {id: 6, name: 'Carbon', price: 25},
+  {id: 7, name: 'Nitrogen', price: 25},
+  {id: 8, name: 'Oxygen', price: 25},
+  {id: 9, name: 'Fluorine', price: 25},
+  {id: 10, name: 'Neon', price: 25},
+  {id: 11, name: 'Sodium', price: 25},
+  {id: 12, name: 'Magnesium', price: 25},
+  {id: 13, name: 'Aluminum', price: 25},
+  {id: 14, name: 'Silicon', price: 25},
+  {id: 15, name: 'Phosphorus', price: 25},
+  {id: 16, name: 'Sulfur', price: 25},
+  {id: 17, name: 'Chlorine', price: 25},
+  {id: 18, name: 'Argon', price: 25},
+  {id: 19, name: 'Potassium', price: 25},
+  {id: 20, name: 'Calcium', price: 25},
 ];
 
 /**
@@ -72,7 +71,7 @@ export class ProductRead2DataSource extends DataSource<Product> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Product[]): Product[] {
+  private getPagedData(data: Product[]) {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -85,7 +84,7 @@ export class ProductRead2DataSource extends DataSource<Product> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Product[]): Product[] {
+  private getSortedData(data: Product[]){
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -94,7 +93,7 @@ export class ProductRead2DataSource extends DataSource<Product> {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
         case 'name': return compare(a.name, b.name, isAsc);
-        // case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }
     });

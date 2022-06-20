@@ -1,7 +1,7 @@
-import { Product } from './../product.model';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Product } from '../product.model';
 
 @Component({
   selector: 'app-product-update',
@@ -10,21 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductUpdateComponent implements OnInit {
 
-  product: Product;
-
-  // product: Product = {
-  //   name: '',
-  //   price: 0
-  // }
+  product: Product
 
   constructor(
     private productService: ProductService,
     private router: Router,
     private route: ActivatedRoute
-    ) { }
+  ) { }
 
+  // faz com que os campos input do update entrem com valores do respectivo id
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id')
     this.productService.readById(id).subscribe(product =>{
       this.product = product
     });
@@ -32,13 +28,13 @@ export class ProductUpdateComponent implements OnInit {
 
   updateProduct(): void{
     this.productService.update(this.product).subscribe(() => {
-      this.productService.showMessage('Produto atualizado com sucesso.');
-      this.router.navigate(["/products"]);
+      this.productService.showMessage('Produto atualizado com sucesso!')
+      this.router.navigate(['/products'])
     })
   }
 
-  cancel(): void{
-    this.router.navigate(["/products"])
+  cancel(): void {
+    this.router.navigate(['/products'])
   }
 
 }
